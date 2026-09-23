@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MYS Enterprises — Design & Software Hub</title>
+    <title>MYS Enterprises â€” Design & Software Hub</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -43,12 +44,6 @@
         .software-icon-bg {
             background: rgba(245, 158, 11, 0.12);
         }
-        /* Logo image sizing */
-        .brand-logo {
-            height: 28px;
-            width: auto;
-            object-fit: contain;
-        }
     </style>
 </head>
 <body class="bg-brandDark text-gray-100 font-sans antialiased selection:bg-brandAccent selection:text-brandDark">
@@ -62,9 +57,8 @@
     <header class="sticky top-0 z-40 bg-brandDark/85 backdrop-blur-md border-b border-gray-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brandAccent via-yellow-400 to-amber-200 flex items-center justify-center shadow-lg shadow-brandAccent/20">
-                    <i class="fa-solid fa-gem text-brandDark text-xl"></i>
-                </div>
+                <!-- Custom Logo -->
+                <img src="logo.png" alt="MYS Enterprises Logo" class="w-14 h-14 rounded-2xl shadow-lg shadow-brandAccent/20 object-cover">
                 <div>
                     <span class="text-xl font-black tracking-wider text-white">MYS <span class="text-brandAccent">ENTERPRISES</span></span>
                     <p class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold">Creative & Design Hub</p>
@@ -92,7 +86,7 @@
             
             <div class="inline-flex items-center space-x-3 welcome-badge px-5 py-2.5 rounded-full text-sm font-semibold text-brandAccent mb-8 shadow-sm backdrop-blur-sm">
                 <i class="fa-regular fa-hand-peace text-lg"></i>
-                <span>Welcome to MYS Enterprises — your creative & software partner</span>
+                <span>Welcome to MYS Enterprises â€” your creative & software partner</span>
             </div>
 
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
@@ -100,7 +94,7 @@
             </h1>
             
             <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-400 mb-10 leading-relaxed">
-                From CorelDRAW & Photoshop mastery to Matrix, Rhino, and high-end jewelry CAD — we deliver professional design and provide paid apps & software.
+                From CorelDRAW & Photoshop mastery to Matrix, Rhino, and high-end jewelry CAD â€” we deliver professional design and provide paid apps & software.
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -127,10 +121,10 @@
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span class="text-brandAccent text-xs font-bold tracking-widest uppercase block mb-2">Our Expertise</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">Design & 3D Modeling Services</h2>
-                <p class="text-gray-400">Professional graphic design, photo editing, and jewelry CAD — powered by industry-standard tools.</p>
+                <p class="text-gray-400">Professional graphic design, photo editing, and jewelry CAD â€” powered by industry-standard tools.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Graphic Design Card - CorelDRAW + Photoshop Logos -->
+                <!-- Graphic Design Card -->
                 <div class="glass-card p-8 rounded-2xl transition group">
                     <div class="w-14 h-14 software-icon-bg rounded-xl flex items-center justify-center gap-1 mb-6 shadow-inner group-hover:scale-110 transition">
                         <i class="fa-brands fa-coreldraw text-2xl text-green-500"></i>
@@ -176,7 +170,7 @@
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span class="text-brandAccent text-xs font-bold tracking-widest uppercase block mb-2">Software Distribution Hub</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">Paid Apps & Software Available</h2>
-                <p class="text-gray-400">Genuine, reliable access to professional design & 3D software — delivered instantly.</p>
+                <p class="text-gray-400">Genuine, reliable access to professional design & 3D software â€” delivered instantly.</p>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -233,7 +227,7 @@
             <div class="glass-card border border-brandAccent/30 rounded-2xl p-8 text-center max-w-3xl mx-auto shadow-xl bg-gradient-to-r from-brandCard to-[#151f35]">
                 <h3 class="text-xl font-bold text-white mb-3">Looking for a specific application?</h3>
                 <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                    We can provide any paid app or software of your choice upon request — safe, reliable, and quick. Just ask!
+                    We can provide any paid app or software of your choice upon request â€” safe, reliable, and quick. Just ask!
                 </p>
                 <a href="tel:03128609955" class="inline-flex items-center space-x-2 bg-brandAccent hover:bg-brandAccentHover text-brandDark font-extrabold px-8 py-3 rounded-xl transition shadow-lg shadow-brandAccent/20">
                     <i class="fa-solid fa-headset"></i>
@@ -302,9 +296,8 @@
     <footer class="bg-brandDark border-t border-gray-800 py-12 text-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-center space-x-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-brandAccent flex items-center justify-center">
-                    <i class="fa-solid fa-gem text-brandDark text-sm"></i>
-                </div>
+                <!-- Custom Logo in Footer -->
+                <img src="logo.png" alt="MYS Enterprises Logo" class="w-10 h-10 rounded-lg object-cover">
                 <span class="text-lg font-black tracking-wider text-white">MYS <span class="text-brandAccent">ENTERPRISES</span></span>
             </div>
             <p class="text-sm text-gray-400 mb-6">MYS Creative & Design Hub. All rights reserved &copy; 2026</p>
