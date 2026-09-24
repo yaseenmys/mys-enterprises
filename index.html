@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -20,7 +20,8 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif']
+                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Instrument Serif', 'serif']
                     }
                 }
             }
@@ -34,10 +35,11 @@
             color: #e5e7eb;
             overflow-x: hidden;
             perspective: 1500px;
+            -webkit-font-smoothing: antialiased;
         }
         .display { font-family: 'Space Grotesk', sans-serif; }
+        .serif { font-family: 'Instrument Serif', serif; font-weight: 400; }
 
-        /* 3D SCENE */
         .scene { perspective: 1200px; perspective-origin: 50% 50%; }
         .card-3d {
             transform-style: preserve-3d;
@@ -46,19 +48,13 @@
         }
         .card-3d:hover {
             transform: translateZ(40px) rotateX(-5deg) rotateY(5deg);
-            box-shadow:
-                0 60px 100px -20px rgba(245, 158, 11, 0.4),
-                0 25px 50px -10px rgba(0, 0, 0, 0.7),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 60px 100px -20px rgba(245, 158, 11, 0.4), 0 25px 50px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        /* HERO GRID */
         .grid-3d {
             position: absolute;
             inset: 0;
-            background-image:
-                linear-gradient(rgba(245, 158, 11, 0.18) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(245, 158, 11, 0.18) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(245, 158, 11, 0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 158, 11, 0.18) 1px, transparent 1px);
             background-size: 60px 60px;
             transform: perspective(600px) rotateX(60deg);
             transform-origin: center bottom;
@@ -67,35 +63,19 @@
             opacity: 0.5;
             animation: gridScroll 20s linear infinite;
         }
-        @keyframes gridScroll {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 60px; }
-        }
+        @keyframes gridScroll { 0% { background-position: 0 0; } 100% { background-position: 0 60px; } }
 
-        /* ROTATING DIAMOND */
         .diamond-wrapper {
             width: 250px; height: 250px;
             position: relative;
             transform-style: preserve-3d;
             animation: diamondFloat 6s ease-in-out infinite;
         }
-        @keyframes diamondFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .diamond-3d {
-            width: 100%; height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: spinDiamond 15s linear infinite;
-        }
-        @keyframes spinDiamond {
-            0%   { transform: rotateX(-20deg) rotateY(0deg); }
-            100% { transform: rotateX(-20deg) rotateY(360deg); }
-        }
+        @keyframes diamondFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .diamond-3d { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: spinDiamond 15s linear infinite; }
+        @keyframes spinDiamond { 0% { transform: rotateX(-20deg) rotateY(0deg); } 100% { transform: rotateX(-20deg) rotateY(360deg); } }
         .diamond-face {
-            position: absolute;
-            width: 100%; height: 100%;
+            position: absolute; width: 100%; height: 100%;
             background: linear-gradient(135deg, #f59e0b, #fcd34d 50%, #f59e0b);
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
             opacity: 0.85;
@@ -108,27 +88,16 @@
         .diamond-face:nth-child(5) { transform: rotateY(240deg) translateZ(125px); }
         .diamond-face:nth-child(6) { transform: rotateY(300deg) translateZ(125px); }
         .diamond-glow {
-            position: absolute;
-            inset: -50px;
+            position: absolute; inset: -50px;
             background: radial-gradient(circle, rgba(245, 158, 11, 0.4), transparent 70%);
             border-radius: 50%;
             animation: glowPulse 3s ease-in-out infinite;
             filter: blur(20px);
         }
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50%      { opacity: 1;   transform: scale(1.15); }
-        }
+        @keyframes glowPulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.15); } }
 
-        /* FLOATING SHAPES */
-        .float-3d {
-            animation: floatY 6s ease-in-out infinite;
-            transform-style: preserve-3d;
-        }
-        @keyframes floatY {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50%      { transform: translateY(-40px) rotate(15deg); }
-        }
+        .float-3d { animation: floatY 6s ease-in-out infinite; transform-style: preserve-3d; }
+        @keyframes floatY { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-40px) rotate(15deg); } }
         .cube {
             width: 60px; height: 60px;
             background: linear-gradient(135deg, #f59e0b, #b45309);
@@ -137,10 +106,7 @@
             border-radius: 8px;
             box-shadow: 0 0 40px rgba(245, 158, 11, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2);
         }
-        @keyframes cubeRotate {
-            0%   { transform: rotateX(0) rotateY(0) rotateZ(0); }
-            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
-        }
+        @keyframes cubeRotate { 0% { transform: rotateX(0) rotateY(0) rotateZ(0); } 100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); } }
         .sphere {
             width: 50px; height: 50px;
             border-radius: 50%;
@@ -154,12 +120,8 @@
             box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
             animation: ringSpin 8s linear infinite;
         }
-        @keyframes ringSpin {
-            0%   { transform: rotateX(60deg) rotateZ(0); }
-            100% { transform: rotateX(60deg) rotateZ(360deg); }
-        }
+        @keyframes ringSpin { 0% { transform: rotateX(60deg) rotateZ(0); } 100% { transform: rotateX(60deg) rotateZ(360deg); } }
 
-        /* GLASS 3D */
         .glass-3d {
             background: rgba(16, 20, 31, 0.65);
             backdrop-filter: blur(20px);
@@ -179,12 +141,8 @@
         }
         .glass-3d:hover::before { left: 100%; }
 
-        /* 3D TEXT */
         .text-3d {
-            text-shadow:
-                0 1px 0 #b45309, 0 2px 0 #92400e, 0 3px 0 #78350f,
-                0 4px 0 #451a03, 0 6px 0 #2c1002,
-                0 8px 25px rgba(245, 158, 11, 0.5);
+            text-shadow: 0 1px 0 #b45309, 0 2px 0 #92400e, 0 3px 0 #78350f, 0 4px 0 #451a03, 0 6px 0 #2c1002, 0 8px 25px rgba(245, 158, 11, 0.5);
         }
         .gradient-text {
             background: linear-gradient(135deg, #f59e0b, #fcd34d, #fbbf24);
@@ -194,52 +152,31 @@
             background-size: 200% 200%;
             animation: gradientShift 4s ease infinite;
         }
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50%      { background-position: 100% 50%; }
-        }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-        /* BUTTON 3D */
         .btn-3d {
             position: relative;
             transition: all 0.2s;
             transform-style: preserve-3d;
             box-shadow: 0 6px 0 #92400e, 0 10px 25px rgba(245, 158, 11, 0.35);
         }
-        .btn-3d:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 9px 0 #92400e, 0 18px 35px rgba(245, 158, 11, 0.5);
-        }
-        .btn-3d:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #92400e, 0 6px 15px rgba(245, 158, 11, 0.3);
-        }
+        .btn-3d:hover { transform: translateY(-3px); box-shadow: 0 9px 0 #92400e, 0 18px 35px rgba(245, 158, 11, 0.5); }
+        .btn-3d:active { transform: translateY(4px); box-shadow: 0 2px 0 #92400e, 0 6px 15px rgba(245, 158, 11, 0.3); }
 
-        /* FADE ANIMATIONS */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1), transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-        }
+        .fade-up { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1), transform 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .fade-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: opacity 0.9s, transform 0.9s;
-        }
+        .fade-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s, transform 0.9s; }
         .fade-left.visible { opacity: 1; transform: translateX(0); }
-        .fade-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: opacity 0.9s, transform 0.9s;
-        }
+        .fade-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s, transform 0.9s; }
         .fade-right.visible { opacity: 1; transform: translateX(0); }
+        .d-1 { transition-delay: 0.1s; }
+        .d-2 { transition-delay: 0.2s; }
+        .d-3 { transition-delay: 0.3s; }
+        .d-4 { transition-delay: 0.4s; }
 
-        /* MARQUEE */
         @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         .marquee { animation: marquee 30s linear infinite; }
 
-        /* ICON BOX */
         .icon-box {
             width: 56px; height: 56px;
             display: flex; align-items: center; justify-content: center;
@@ -248,11 +185,8 @@
             transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             transform-style: preserve-3d;
         }
-        .card-3d:hover .icon-box {
-            transform: scale(1.2) translateZ(30px) rotate(-8deg);
-        }
+        .card-3d:hover .icon-box { transform: scale(1.2) translateZ(30px) rotate(-8deg); }
 
-        /* PHOTOSHOP "Ps" ICON */
         .ps-icon {
             width: 56px; height: 56px;
             background: #001E36;
@@ -268,6 +202,7 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.3s;
+            flex-shrink: 0;
         }
         .ps-icon::after {
             content: '';
@@ -278,82 +213,51 @@
             animation: shimmer 3s infinite;
         }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
-        .card-3d:hover .ps-icon {
-            transform: scale(1.15) translateZ(30px) rotate(-5deg);
-            box-shadow: 0 0 50px rgba(49, 168, 255, 0.8), inset 0 0 20px rgba(49, 168, 255, 0.4);
-        }
 
-        /* MYS 3D LOGO (HEADER) */
         .mys-logo-3d {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            display: flex; align-items: center; gap: 12px;
             transform-style: preserve-3d;
             transition: transform 0.5s;
-        }
-        .mys-logo-3d:hover {
-            transform: perspective(800px) rotateY(-15deg) rotateX(10deg);
+            flex-shrink: 0;
         }
         .mys-logo-gem {
-            width: 48px; height: 48px;
+            width: 44px; height: 44px;
+            flex-shrink: 0;
             background: linear-gradient(135deg, #f59e0b, #fcd34d, #f59e0b);
             border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow:
-                0 10px 25px rgba(245, 158, 11, 0.5),
-                inset 0 2px 4px rgba(255, 255, 255, 0.4),
-                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
-            transform-style: preserve-3d;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
             position: relative;
             animation: logoFloat 4s ease-in-out infinite;
         }
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50%      { transform: translateY(-4px) rotate(3deg); }
-        }
-        .mys-logo-gem::before {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.6), transparent 70%);
-            border-radius: 16px;
-            z-index: -1;
-            filter: blur(10px);
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-        .mys-logo-gem i {
-            color: #07090e;
-            font-size: 22px;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
+        @keyframes logoFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-4px) rotate(3deg); } }
+        .mys-logo-gem i { color: #07090e; font-size: 20px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
         .mys-logo-text { display: flex; flex-direction: column; }
         .mys-logo-text .line1 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
-            font-size: 18px;
+            font-size: 15px;
             color: #ffffff;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.02em;
             text-shadow: 0 1px 0 #b45309, 0 2px 0 #92400e, 0 3px 0 #78350f, 0 4px 8px rgba(245, 158, 11, 0.5);
             line-height: 1;
+            white-space: nowrap;
         }
         .mys-logo-text .line1 span { color: #f59e0b; }
         .mys-logo-text .line2 {
-            font-size: 9px;
+            font-size: 8px;
             color: #9ca3af;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
             font-weight: 600;
             margin-top: 4px;
+            white-space: nowrap;
         }
 
-        /* SCROLLBAR */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #07090e; }
         ::-webkit-scrollbar-thumb { background: linear-gradient(#f59e0b, #b45309); border-radius: 5px; }
 
-        /* PARTICLES */
         .particle {
             position: absolute;
             width: 4px; height: 4px;
@@ -363,38 +267,20 @@
             animation: particleFloat 8s linear infinite;
             opacity: 0.6;
         }
-        @keyframes particleFloat {
-            0%   { transform: translateY(0) translateX(0); opacity: 0; }
-            10%  { opacity: 0.8; }
-            90%  { opacity: 0.8; }
-            100% { transform: translateY(-500px) translateX(50px); opacity: 0; }
-        }
+        @keyframes particleFloat { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(-500px) translateX(50px); opacity: 0; } }
 
-        /* ============================================
-           FLOATING WHATSAPP BUTTON (Circular Orbit)
-           ============================================ */
         .wa-orbit {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+            position: fixed; bottom: 30px; right: 30px;
             z-index: 9999;
-            width: 70px;
-            height: 70px;
+            width: 70px; height: 70px;
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             color: white;
             font-size: 36px;
-            box-shadow: 
-                0 10px 30px rgba(37, 211, 102, 0.6),
-                0 0 0 0 rgba(37, 211, 102, 0.7),
-                inset 0 -4px 8px rgba(0, 0, 0, 0.2),
-                inset 0 4px 8px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0.7), inset 0 -4px 8px rgba(0, 0, 0, 0.2), inset 0 4px 8px rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            transform-style: preserve-3d;
             text-decoration: none;
             animation: wa-pulse 2s infinite;
         }
@@ -410,10 +296,8 @@
         .wa-orbit::after {
             content: '';
             position: absolute;
-            top: -15px;
-            left: 50%;
-            width: 10px;
-            height: 10px;
+            top: -15px; left: 50%;
+            width: 10px; height: 10px;
             background: #25D366;
             border-radius: 50%;
             box-shadow: 0 0 15px #25D366, 0 0 30px #25D366;
@@ -421,33 +305,12 @@
             animation: orbitDot 8s linear infinite;
             pointer-events: none;
         }
-        @keyframes orbitSpin {
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes orbitDot {
-            0%   { transform: translateX(-50%) rotate(0deg) translateY(-50px) rotate(0deg); }
-            100% { transform: translateX(-50%) rotate(360deg) translateY(-50px) rotate(-360deg); }
-        }
-        .wa-orbit:hover {
-            transform: scale(1.15);
-            box-shadow: 
-                0 20px 50px rgba(37, 211, 102, 0.8),
-                0 0 0 25px rgba(37, 211, 102, 0.15),
-                inset 0 -4px 8px rgba(0, 0, 0, 0.2),
-                inset 0 4px 8px rgba(255, 255, 255, 0.4);
-        }
-        .wa-orbit:hover::before {
-            animation-duration: 2s;
-        }
-        @keyframes wa-pulse {
-            0%   { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70%  { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 0 22px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+        @keyframes orbitSpin { 100% { transform: rotate(360deg); } }
+        @keyframes orbitDot { 0% { transform: translateX(-50%) rotate(0deg) translateY(-50px) rotate(0deg); } 100% { transform: translateX(-50%) rotate(360deg) translateY(-50px) rotate(-360deg); } }
+        .wa-orbit:hover { transform: scale(1.15); }
+        @keyframes wa-pulse { 0% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 0 22px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0); } }
         .wa-orbit .wa-tip {
-            position: absolute;
-            right: 85px;
-            top: 50%;
+            position: absolute; right: 85px; top: 50%;
             transform: translateY(-50%) translateX(10px);
             background: #07090e;
             color: #25D366;
@@ -462,22 +325,48 @@
             border: 1px solid rgba(37, 211, 102, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-        .wa-orbit:hover .wa-tip {
-            opacity: 1;
-            transform: translateY(-50%) translateX(0);
-        }
+        .wa-orbit:hover .wa-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
 
-        /* Mobile */
         @media (max-width: 640px) {
             .wa-orbit { width: 60px; height: 60px; font-size: 28px; bottom: 20px; right: 20px; }
             .wa-orbit .wa-tip { display: none; }
         }
 
-        /* FAQ */
         details summary { cursor: pointer; list-style: none; }
         details summary::-webkit-details-marker { display: none; }
         details[open] .faq-icon { transform: rotate(45deg); }
         .faq-icon { transition: transform 0.3s; }
+
+        .quote-mark { font-family: 'Instrument Serif', serif; font-size: 72px; line-height: 0.8; color: #f59e0b; opacity: 0.3; }
+        .stars { color: #f59e0b; letter-spacing: 2px; }
+        .review-avatar {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* ✅ FIXED: Most Popular Badge */
+        .pricing-popular {
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 16px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: #07090e;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+            z-index: 10;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -496,31 +385,31 @@
 
     <!-- ============ HEADER ============ -->
     <header class="sticky top-0 z-40 bg-ink/85 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
             <div class="mys-logo-3d">
-                <div class="mys-logo-gem">
-                    <i class="fa-solid fa-gem"></i>
-                </div>
+                <div class="mys-logo-gem"><i class="fa-solid fa-gem"></i></div>
                 <div class="mys-logo-text">
                     <span class="line1">MYS <span>ENTERPRISES</span></span>
                     <span class="line2">Creative & Design Hub</span>
                 </div>
             </div>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium">
-                <a href="#home" class="text-gray-400 hover:text-accent transition"><i class="fa-solid fa-house mr-1.5 text-xs"></i>Home</a>
-                <a href="#services" class="text-gray-400 hover:text-accent transition"><i class="fa-solid fa-briefcase mr-1.5 text-xs"></i>Services</a>
-                <a href="#software" class="text-gray-400 hover:text-accent transition"><i class="fa-solid fa-cube mr-1.5 text-xs"></i>Software</a>
-                <a href="#portfolio" class="text-gray-400 hover:text-accent transition"><i class="fa-solid fa-images mr-1.5 text-xs"></i>Portfolio</a>
-                <a href="#contact" class="text-gray-400 hover:text-accent transition"><i class="fa-solid fa-envelope mr-1.5 text-xs"></i>Contact</a>
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+                <a href="#home" class="text-gray-400 hover:text-accent transition">Home</a>
+                <a href="#services" class="text-gray-400 hover:text-accent transition">Services</a>
+                <a href="#software" class="text-gray-400 hover:text-accent transition">Software</a>
+                <a href="#portfolio" class="text-gray-400 hover:text-accent transition">Portfolio</a>
+                <a href="#pricing" class="text-gray-400 hover:text-accent transition">Pricing</a>
+                <a href="#reviews" class="text-gray-400 hover:text-accent transition">Reviews</a>
+                <a href="#contact" class="text-gray-400 hover:text-accent transition">Contact</a>
             </nav>
-            <a href="tel:03128609955" class="btn-3d bg-accent text-ink font-bold px-5 py-2.5 rounded-xl text-sm">
+            <a href="tel:03128609955" class="btn-3d bg-accent text-ink font-bold px-3 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap">
                 <i class="fa-solid fa-phone mr-2"></i>0312-8609955
             </a>
         </div>
     </header>
 
-    <!-- ============ HERO 3D ============ -->
+    <!-- ============ HERO ============ -->
     <section id="home" class="relative py-24 lg:py-32 overflow-hidden scene">
         <div class="grid-3d"></div>
         
@@ -530,78 +419,62 @@
         <div class="particle" style="top: 60%; left: 70%; animation-delay: 3s;"></div>
         <div class="particle" style="top: 85%; left: 85%; animation-delay: 4s;"></div>
 
-        <div class="absolute top-32 left-10 float-3d" style="animation-delay: 0s;">
-            <div class="cube"></div>
-        </div>
-        <div class="absolute top-48 right-20 float-3d" style="animation-delay: 1s;">
-            <div class="sphere"></div>
-        </div>
-        <div class="absolute bottom-32 left-1/4 float-3d" style="animation-delay: 2s;">
-            <div class="sphere" style="width:70px;height:70px;"></div>
-        </div>
-        <div class="absolute top-20 right-1/3 float-3d" style="animation-delay: 1.5s;">
-            <div class="cube" style="width:40px;height:40px;"></div>
-        </div>
-        <div class="absolute top-40 left-1/2 float-3d" style="animation-delay: 2.5s;">
-            <div class="ring-3d"></div>
-        </div>
+        <div class="absolute top-32 left-10 float-3d hidden lg:block"><div class="cube"></div></div>
+        <div class="absolute top-48 right-20 float-3d hidden lg:block"><div class="sphere"></div></div>
+        <div class="absolute bottom-32 left-1/4 float-3d hidden lg:block"><div class="sphere" style="width:70px;height:70px;"></div></div>
+        <div class="absolute top-40 left-1/2 float-3d hidden lg:block"><div class="ring-3d"></div></div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-left">
-                    
-                    <!-- MYS ENTERPRISES Heading -->
                     <div class="mb-6">
-                        <h2 class="display text-2xl lg:text-3xl font-black text-white tracking-wider text-3d">
+                        <h2 class="display text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-wider text-3d whitespace-nowrap">
                             MYS <span class="gradient-text">ENTERPRISES</span>
                         </h2>
-                        <p class="text-accent text-xs tracking-[0.4em] uppercase font-bold mt-2">
+                        <p class="text-accent text-[10px] sm:text-xs tracking-[0.4em] uppercase font-bold mt-2">
                             <i class="fa-solid fa-gem mr-2"></i>Creative & Design Hub
                         </p>
                     </div>
 
-                    <!-- Available badge -->
                     <div class="inline-flex items-center gap-2 glass-3d px-4 py-2 rounded-full mb-8 card-3d">
                         <i class="fa-solid fa-circle text-green-400 text-xs animate-pulse"></i>
                         <span class="text-xs font-semibold text-gray-300">Available for Projects & Software Orders</span>
                     </div>
 
-                    <h1 class="display text-5xl lg:text-7xl font-black text-white leading-tight mb-6 text-3d">
+                    <h1 class="display text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 text-3d">
                         Design That<br>
                         <span class="gradient-text">Inspires.</span><br>
                         Software That<br>
                         <span class="gradient-text">Delivers.</span>
                     </h1>
-                    <p class="text-gray-400 text-lg mb-8 max-w-lg">
+                    <p class="text-gray-400 text-base sm:text-lg mb-8 max-w-lg">
                         Professional Graphic Design, 3D Jewelry CAD, and Premium Software — CorelDRAW, Photoshop, MatrixGold, Rhino 7 & more.
                     </p>
                     <div class="flex flex-wrap gap-4 mb-12">
-                        <a href="#software" class="btn-3d bg-accent text-ink font-bold px-8 py-4 rounded-xl">
+                        <a href="#software" class="btn-3d bg-accent text-ink font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base">
                             <i class="fa-solid fa-rocket mr-2"></i>Explore Software
                         </a>
-                        <a href="https://wa.me/923128609955" target="_blank" class="glass-3d card-3d text-white font-bold px-8 py-4 rounded-xl">
+                        <a href="https://wa.me/923128609955" target="_blank" class="glass-3d card-3d text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base">
                             <i class="fa-brands fa-whatsapp mr-2 text-green-400"></i>WhatsApp Now
                         </a>
                     </div>
 
-                    <!-- ✅ FIXED: Stats (Mobile Friendly) -->
-                    <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-md">
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 max-w-md">
                         <div class="glass-3d card-3d rounded-2xl p-3 sm:p-4 text-center overflow-hidden">
-                            <div class="text-lg sm:text-2xl font-black text-accent leading-tight">1000+</div>
-                            <div class="text-[10px] sm:text-xs text-gray-500 mt-1"><i class="fa-solid fa-check-circle mr-1"></i>Projects</div>
+                            <div class="text-base sm:text-2xl font-black text-accent leading-tight">1000+</div>
+                            <div class="text-[9px] sm:text-xs text-gray-500 mt-1">Projects</div>
                         </div>
                         <div class="glass-3d card-3d rounded-2xl p-3 sm:p-4 text-center overflow-hidden">
-                            <div class="text-lg sm:text-2xl font-black text-accent leading-tight">5000+</div>
-                            <div class="text-[10px] sm:text-xs text-gray-500 mt-1"><i class="fa-solid fa-heart mr-1"></i>Clients</div>
+                            <div class="text-base sm:text-2xl font-black text-accent leading-tight">5000+</div>
+                            <div class="text-[9px] sm:text-xs text-gray-500 mt-1">Clients</div>
                         </div>
                         <div class="glass-3d card-3d rounded-2xl p-3 sm:p-4 text-center overflow-hidden">
-                            <div class="text-lg sm:text-2xl font-black text-accent leading-tight">24/7</div>
-                            <div class="text-[10px] sm:text-xs text-gray-500 mt-1"><i class="fa-solid fa-clock mr-1"></i>Support</div>
+                            <div class="text-base sm:text-2xl font-black text-accent leading-tight">24/7</div>
+                            <div class="text-[9px] sm:text-xs text-gray-500 mt-1">Support</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3D Diamond -->
                 <div class="relative hidden lg:flex items-center justify-center fade-right" style="height: 500px;">
                     <div class="diamond-wrapper">
                         <div class="diamond-glow"></div>
@@ -637,9 +510,33 @@
         </div>
     </section>
 
+    <!-- ============ TRUST STATS BAR ============ -->
+    <section class="py-14 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 fade-up">
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-black text-accent mb-1">1000+</div>
+                    <div class="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">Projects Done</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-black text-accent mb-1">5000+</div>
+                    <div class="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">Happy Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-black text-accent mb-1">15+</div>
+                    <div class="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">Software Titles</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-black text-accent mb-1">4.9★</div>
+                    <div class="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">Client Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ SERVICES ============ -->
     <section id="services" class="py-24 scene">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-briefcase"></i></div>
                 <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">What We Do</span>
@@ -652,17 +549,17 @@
                     <h3 class="text-lg font-bold text-white mb-3">Graphic Design</h3>
                     <p class="text-gray-500 text-sm">Logos, branding, vector art with CorelDRAW & Photoshop.</p>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-1">
                     <div class="icon-box bg-accent/10 text-accent mb-5"><i class="fa-solid fa-gem"></i></div>
                     <h3 class="text-lg font-bold text-white mb-3">MatrixGold CAD</h3>
                     <p class="text-gray-500 text-sm">Advanced parametric jewelry design & 3D models.</p>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-2">
                     <div class="icon-box bg-amber-500/10 text-amber-400 mb-5"><i class="fa-solid fa-cube"></i></div>
                     <h3 class="text-lg font-bold text-white mb-3">Rhino 3D</h3>
                     <p class="text-gray-500 text-sm">Complex surface modeling & photorealistic rendering.</p>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
                     <div class="icon-box bg-purple-500/10 text-purple-400 mb-5"><i class="fa-solid fa-laptop-code"></i></div>
                     <h3 class="text-lg font-bold text-white mb-3">Web & Digital</h3>
                     <p class="text-gray-500 text-sm">Website design & digital branding for your business.</p>
@@ -671,9 +568,42 @@
         </div>
     </section>
 
+    <!-- ============ PROCESS ============ -->
+    <section class="py-24 bg-ink/60 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-diagram-project"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">How We Work</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Our Simple <span class="gradient-text">Process</span></h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up">
+                    <div class="text-5xl font-black text-accent/30 mb-4 serif italic">01</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Discovery</h3>
+                    <p class="text-gray-500 text-sm">We understand your vision, goals, and requirements.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-1">
+                    <div class="text-5xl font-black text-accent/30 mb-4 serif italic">02</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Design</h3>
+                    <p class="text-gray-500 text-sm">Crafting concepts with precision using industry tools.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-2">
+                    <div class="text-5xl font-black text-accent/30 mb-4 serif italic">03</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Refine</h3>
+                    <p class="text-gray-500 text-sm">Iterating until every detail is absolutely perfect.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-3">
+                    <div class="text-5xl font-black text-accent/30 mb-4 serif italic">04</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Deliver</h3>
+                    <p class="text-gray-500 text-sm">Final delivery in all required formats, ready to use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ SOFTWARE HUB ============ -->
-    <section id="software" class="py-24 bg-ink/60 border-y border-white/5 scene">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="software" class="py-24 scene">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-cube"></i></div>
                 <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Software Hub</span>
@@ -691,7 +621,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20CorelDRAW" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-1">
                     <div class="flex items-start justify-between mb-5">
                         <div class="ps-icon">Ps</div>
                         <span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-semibold">Trending</span>
@@ -701,7 +631,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20Photoshop" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-2">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-accent/10 text-accent"><i class="fa-solid fa-gem"></i></div>
                         <span class="text-xs bg-accent/10 text-accent px-3 py-1 rounded-full font-semibold">Premium</span>
@@ -711,7 +641,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20MatrixGold" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-amber-500/10 text-amber-400"><i class="fa-solid fa-cube"></i></div>
                     </div>
@@ -720,7 +650,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20Rhino%207" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-orange-500/10 text-orange-400"><i class="fa-solid fa-cubes"></i></div>
                     </div>
@@ -729,7 +659,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20Blender" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-cyan-500/10 text-cyan-400"><i class="fa-solid fa-laptop-code"></i></div>
                         <span class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full font-semibold">Custom</span>
@@ -739,21 +669,12 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20Custom%20Software" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
             </div>
-
-            <div class="glass-3d card-3d rounded-2xl p-8 text-center max-w-3xl mx-auto fade-up" style="border-color: rgba(245,158,11,0.3);">
-                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-headset"></i></div>
-                <h3 class="text-xl font-bold text-white mb-3">Looking for a specific application?</h3>
-                <p class="text-gray-400 text-sm mb-6">We can provide any paid app or software upon request — safe and reliable.</p>
-                <a href="https://wa.me/923128609955?text=I%20want%20a%20custom%20software" target="_blank" class="btn-3d inline-flex items-center gap-2 bg-accent text-ink font-bold px-8 py-3 rounded-xl">
-                    <i class="fa-brands fa-whatsapp"></i> Request on WhatsApp
-                </a>
-            </div>
         </div>
     </section>
 
     <!-- ============ PORTFOLIO ============ -->
-    <section id="portfolio" class="py-24 scene">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="portfolio" class="py-24 bg-ink/60 border-y border-white/5 scene">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-images"></i></div>
                 <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Our Work</span>
@@ -769,7 +690,7 @@
                         <h3 class="text-white font-bold mt-1">Diamond Solitaire Ring</h3>
                     </div>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up">
+                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up d-1">
                     <div class="h-56 bg-gradient-to-br from-purple-500/20 to-pink-500/10 flex items-center justify-center">
                         <i class="fa-solid fa-palette text-6xl text-purple-400/70"></i>
                     </div>
@@ -778,7 +699,7 @@
                         <h3 class="text-white font-bold mt-1">Luxury Brand Identity</h3>
                     </div>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up">
+                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up d-2">
                     <div class="h-56 bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center">
                         <i class="fa-solid fa-cube text-6xl text-cyan-400/70"></i>
                     </div>
@@ -787,7 +708,7 @@
                         <h3 class="text-white font-bold mt-1">Complex Ring Structure</h3>
                     </div>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up">
+                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up d-3">
                     <div class="h-56 bg-gradient-to-br from-green-500/20 to-emerald-500/10 flex items-center justify-center">
                         <i class="fa-solid fa-bezier-curve text-6xl text-green-400/70"></i>
                     </div>
@@ -796,7 +717,7 @@
                         <h3 class="text-white font-bold mt-1">Custom Logo Design</h3>
                     </div>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up">
+                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up d-3">
                     <div class="h-56 bg-gradient-to-br from-red-500/20 to-rose-500/10 flex items-center justify-center">
                         <i class="fa-solid fa-gem text-6xl text-red-400/70"></i>
                     </div>
@@ -805,7 +726,7 @@
                         <h3 class="text-white font-bold mt-1">Pendant Collection</h3>
                     </div>
                 </div>
-                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up">
+                <div class="glass-3d card-3d rounded-2xl overflow-hidden fade-up d-4">
                     <div class="h-56 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 flex items-center justify-center">
                         <span class="ps-icon" style="width:80px;height:80px;font-size:34px;">Ps</span>
                     </div>
@@ -818,9 +739,531 @@
         </div>
     </section>
 
+    <!-- ============ CLIENTS WALL (NEW) ============ -->
+    <section class="py-16 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 fade-up">
+                <span class="text-gray-500 text-xs font-bold tracking-[0.3em] uppercase">Trusted By Leading Brands</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center fade-up">
+                <div class="glass-3d rounded-2xl p-6 text-center card-3d">
+                    <i class="fa-solid fa-crown text-accent text-3xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">Jewelry Co.</div>
+                </div>
+                <div class="glass-3d rounded-2xl p-6 text-center card-3d">
+                    <i class="fa-solid fa-gem text-accent text-3xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">Diamond Hub</div>
+                </div>
+                <div class="glass-3d rounded-2xl p-6 text-center card-3d">
+                    <i class="fa-solid fa-palette text-accent text-3xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">Design Studio</div>
+                </div>
+                <div class="glass-3d rounded-2xl p-6 text-center card-3d">
+                    <i class="fa-solid fa-cube text-accent text-3xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">3D Works</div>
+                </div>
+                <div class="glass-3d rounded-2xl p-6 text-center card-3d">
+                    <i class="fa-solid fa-star text-accent text-3xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">Star Studio</div>
+                </div>
+                <div class="glass-3d rounded-2xl p-6 text-center card-3d">
+                    <i class="fa-solid fa-fire text-accent text-3xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">Fire Brands</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRICING (FIXED BADGE) ============ -->
+    <section id="pricing" class="py-24 scene">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-tags"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Pricing Plans</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Simple, Transparent <span class="gradient-text">Pricing</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Choose the plan that fits your needs — from starter to enterprise.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+                <!-- Basic -->
+                <div class="glass-3d card-3d rounded-2xl p-8 fade-up">
+                    <div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-2">Starter</div>
+                    <div class="text-4xl font-black text-white mb-1">Custom</div>
+                    <div class="text-gray-500 text-sm mb-6">Perfect for single projects</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> 1 Design Concept</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> 2 Revisions</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> Standard Files</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> 3-Day Delivery</li>
+                    </ul>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Starter%20plan" target="_blank" class="block text-center glass-3d border border-white/10 text-white font-bold py-3 rounded-xl hover:border-accent transition">Get Quote</a>
+                </div>
+
+                <!-- Professional (FIXED BADGE) -->
+                <div class="glass-3d card-3d rounded-2xl p-8 pt-14 fade-up d-1 relative" style="border: 2px solid rgba(245, 158, 11, 0.5); overflow: visible;">
+                    <div class="pricing-popular">Most Popular</div>
+                    <div class="text-xs text-accent uppercase tracking-widest font-semibold mb-2">Professional</div>
+                    <div class="text-4xl font-black text-white mb-1">Custom</div>
+                    <div class="text-gray-500 text-sm mb-6">Best for growing brands</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2 text-sm text-gray-300"><i class="fa-solid fa-check text-green-400 text-xs"></i> 3 Design Concepts</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300"><i class="fa-solid fa-check text-green-400 text-xs"></i> Unlimited Revisions</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300"><i class="fa-solid fa-check text-green-400 text-xs"></i> All File Formats</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300"><i class="fa-solid fa-check text-green-400 text-xs"></i> Priority Delivery</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300"><i class="fa-solid fa-check text-green-400 text-xs"></i> 3D Preview</li>
+                    </ul>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Professional%20plan" target="_blank" class="btn-3d block text-center bg-accent text-ink font-bold py-3 rounded-xl">Get Quote</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="glass-3d card-3d rounded-2xl p-8 fade-up d-2">
+                    <div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-2">Enterprise</div>
+                    <div class="text-4xl font-black text-white mb-1">Custom</div>
+                    <div class="text-gray-500 text-sm mb-6">For large-scale needs</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> Everything in Pro</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> Dedicated Manager</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> Bulk Projects</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-check text-green-400 text-xs"></i> Custom Software</li>
+                    </ul>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Enterprise%20plan" target="_blank" class="block text-center glass-3d border border-white/10 text-white font-bold py-3 rounded-xl hover:border-accent transition">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section id="reviews" class="py-24 bg-ink/60 border-y border-white/5 scene">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-star"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Client Reviews</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">What Our <span class="gradient-text">Clients Say</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Real feedback from real clients — trusted by thousands worldwide.</p>
+            </div>
+
+            <div class="glass-3d card-3d rounded-2xl p-8 max-w-2xl mx-auto mb-12 text-center fade-up">
+                <div class="text-6xl font-black text-accent mb-2">4.9</div>
+                <div class="stars text-3xl mb-3">★★★★★</div>
+                <div class="text-gray-400 text-sm">Based on <span class="text-white font-bold">500+ verified reviews</span></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                    <div class="quote-mark mb-3">"</div>
+                    <div class="stars text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Outstanding quality and lightning-fast delivery. The 3D jewelry CAD work exceeded our expectations completely.</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-white/5">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #f59e0b, #b45309);">A</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Ahmed Khan</div>
+                            <div class="text-gray-500 text-xs">Jewelry Business Owner</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-1">
+                    <div class="quote-mark mb-3">"</div>
+                    <div class="stars text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Best decision for our brand. The logo and identity work was world-class. They understood our vision perfectly.</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-white/5">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">S</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Sarah Malik</div>
+                            <div class="text-gray-500 text-xs">Creative Director</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-2">
+                    <div class="quote-mark mb-3">"</div>
+                    <div class="stars text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Got all the software I needed at great prices. Reliable, fast, and professional service every single time.</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-white/5">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">H</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Hassan Raza</div>
+                            <div class="text-gray-500 text-xs">Freelance Designer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
+                    <div class="quote-mark mb-3">"</div>
+                    <div class="stars text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Amazing experience working with MYS Enterprises. The MatrixGold files were production-ready and saved us weeks.</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-white/5">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #22c55e, #15803d);">M</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Muhammad Ali</div>
+                            <div class="text-gray-500 text-xs">CAD Engineer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
+                    <div class="quote-mark mb-3">"</div>
+                    <div class="stars text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Fast response, great pricing, and exceptional quality. The Photoshop work on our product photos was outstanding.</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-white/5">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #ef4444, #b91c1c);">F</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Fatima Sheikh</div>
+                            <div class="text-gray-500 text-xs">E-commerce Owner</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
+                    <div class="quote-mark mb-3">"</div>
+                    <div class="stars text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">Reliable software supplier with genuine products. I've purchased multiple licenses and never had any issues.</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-white/5">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #ec4899, #be185d);">Z</div>
+                        <div>
+                            <div class="text-white font-semibold text-sm">Zainab Ahmed</div>
+                            <div class="text-gray-500 text-xs">Studio Manager</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-left">
+                    <div class="icon-box bg-accent/10 text-accent mb-4"><i class="fa-solid fa-award"></i></div>
+                    <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Why Choose Us</span>
+                    <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-6">
+                        Excellence in every <span class="gradient-text">detail.</span>
+                    </h2>
+                    <p class="text-gray-400 mb-8">
+                        We combine years of experience, premium tools, and a passion for perfection to deliver results that exceed expectations.
+                    </p>
+
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-bolt text-accent text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Lightning Fast Delivery</h4>
+                                <p class="text-gray-500 text-sm">Quick turnaround without compromising quality.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-shield-halved text-green-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">100% Genuine Software</h4>
+                                <p class="text-gray-500 text-sm">Safe, reliable, and verified software sources.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-headset text-amber-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">24/7 Support</h4>
+                                <p class="text-gray-500 text-sm">Always available via WhatsApp, call, or email.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-users text-purple-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Expert Team</h4>
+                                <p class="text-gray-500 text-sm">Years of experience in design and 3D CAD.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative fade-up d-2">
+                    <div class="glass-3d card-3d rounded-2xl p-10 text-center">
+                        <div class="text-8xl lg:text-9xl font-black gradient-text mb-4">15<span class="text-accent">+</span></div>
+                        <div class="text-white text-xl font-bold mb-2">Years of Excellence</div>
+                        <div class="text-gray-500 text-sm">Serving clients worldwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TEAM (NEW) ============ -->
+    <section class="py-24 bg-ink/60 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-users"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Our Team</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Meet The <span class="gradient-text">Experts</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Talented professionals dedicated to delivering excellence.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center mx-auto mb-4 text-white text-2xl font-black">M</div>
+                    <h3 class="text-white font-bold mb-1">Muhammad Yasin</h3>
+                    <p class="text-accent text-xs font-semibold uppercase tracking-wider mb-3">Founder & CEO</p>
+                    <p class="text-gray-500 text-sm">15+ years in jewelry CAD and design leadership.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-1">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mx-auto mb-4 text-white text-2xl font-black">A</div>
+                    <h3 class="text-white font-bold mb-1">Aisha Khan</h3>
+                    <p class="text-accent text-xs font-semibold uppercase tracking-wider mb-3">Lead Designer</p>
+                    <p class="text-gray-500 text-sm">Expert in MatrixGold and parametric jewelry design.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-2">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mx-auto mb-4 text-white text-2xl font-black">H</div>
+                    <h3 class="text-white font-bold mb-1">Hassan Raza</h3>
+                    <p class="text-accent text-xs font-semibold uppercase tracking-wider mb-3">3D Modeler</p>
+                    <p class="text-gray-500 text-sm">Specialist in Rhino 7 and complex surface modeling.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-3">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mx-auto mb-4 text-white text-2xl font-black">S</div>
+                    <h3 class="text-white font-bold mb-1">Sara Ali</h3>
+                    <p class="text-accent text-xs font-semibold uppercase tracking-wider mb-3">Graphic Designer</p>
+                    <p class="text-gray-500 text-sm">CorelDRAW & Photoshop expert for branding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ AWARDS ============ -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-trophy"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Recognition</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Awards & <span class="gradient-text">Achievements</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-3d card-3d rounded-2xl p-8 text-center fade-up">
+                    <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-trophy text-accent text-2xl"></i>
+                    </div>
+                    <div class="text-white font-bold mb-2">Best Design Studio 2025</div>
+                    <div class="text-gray-500 text-sm">Pakistan Creative Awards</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-8 text-center fade-up d-1">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-medal text-purple-400 text-2xl"></i>
+                    </div>
+                    <div class="text-white font-bold mb-2">Top 10 CAD Studio</div>
+                    <div class="text-gray-500 text-sm">Jewelry Design Awards</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-8 text-center fade-up d-2">
+                    <div class="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-star text-green-400 text-2xl"></i>
+                    </div>
+                    <div class="text-white font-bold mb-2">5.0 Client Rating</div>
+                    <div class="text-gray-500 text-sm">Based on 500+ reviews</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="py-24 bg-ink/60 border-y border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-circle-question"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">FAQ</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Common <span class="gradient-text">Questions</span></h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="glass-3d card-3d rounded-2xl p-6 fade-up" open>
+                    <summary class="flex justify-between items-center">
+                        <span class="text-white font-semibold pr-4">What services do you offer?</span>
+                        <i class="fa-solid fa-plus text-accent faq-icon"></i>
+                    </summary>
+                    <p class="text-gray-400 text-sm leading-relaxed mt-4">We offer Graphic Design, 3D Jewelry CAD (MatrixGold, Rhino), Photo Retouching, Vector Art, and Web Design. We also provide access to premium software like CorelDRAW, Photoshop, MatrixGold, Rhino 7, and more.</p>
+                </details>
+
+                <details class="glass-3d card-3d rounded-2xl p-6 fade-up d-1">
+                    <summary class="flex justify-between items-center">
+                        <span class="text-white font-semibold pr-4">How long does a project take?</span>
+                        <i class="fa-solid fa-plus text-accent faq-icon"></i>
+                    </summary>
+                    <p class="text-gray-400 text-sm leading-relaxed mt-4">Timeline depends on the project scope. Simple designs take 1-2 days, while complex 3D CAD projects can take 3-7 days. We always discuss and confirm the delivery timeline upfront.</p>
+                </details>
+
+                <details class="glass-3d card-3d rounded-2xl p-6 fade-up d-2">
+                    <summary class="flex justify-between items-center">
+                        <span class="text-white font-semibold pr-4">Are the software genuine and safe?</span>
+                        <i class="fa-solid fa-plus text-accent faq-icon"></i>
+                    </summary>
+                    <p class="text-gray-400 text-sm leading-relaxed mt-4">Absolutely. All software we provide is 100% safe, verified, and reliable. We test everything before delivery and provide installation support.</p>
+                </details>
+
+                <details class="glass-3d card-3d rounded-2xl p-6 fade-up d-3">
+                    <summary class="flex justify-between items-center">
+                        <span class="text-white font-semibold pr-4">Do you offer custom software requests?</span>
+                        <i class="fa-solid fa-plus text-accent faq-icon"></i>
+                    </summary>
+                    <p class="text-gray-400 text-sm leading-relaxed mt-4">Yes! If you need a specific software or tool that we haven't listed, just contact us on WhatsApp. We'll try our best to source it for you.</p>
+                </details>
+
+                <details class="glass-3d card-3d rounded-2xl p-6 fade-up d-4">
+                    <summary class="flex justify-between items-center">
+                        <span class="text-white font-semibold pr-4">How can I contact you?</span>
+                        <i class="fa-solid fa-plus text-accent faq-icon"></i>
+                    </summary>
+                    <p class="text-gray-400 text-sm leading-relaxed mt-4">The fastest way is WhatsApp: <a href="https://wa.me/923128609955" class="text-accent hover:underline">Chat Now →</a>. You can also call us at 0312-8609955 or email myaseensaddiquimys@gmail.com.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ STATS COUNTER (NEW) ============ -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 fade-up">
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Our Numbers</span>
+                <h2 class="display text-3xl lg:text-4xl font-black text-white mt-3 mb-4">By The <span class="gradient-text">Numbers</span></h2>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-3d card-3d rounded-2xl p-8 text-center fade-up">
+                    <i class="fa-solid fa-briefcase text-accent text-4xl mb-4"></i>
+                    <div class="text-4xl font-black text-white mb-2">1000+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest">Projects Completed</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-8 text-center fade-up d-1">
+                    <i class="fa-solid fa-users text-accent text-4xl mb-4"></i>
+                    <div class="text-4xl font-black text-white mb-2">5000+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest">Happy Clients</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-8 text-center fade-up d-2">
+                    <i class="fa-solid fa-cube text-accent text-4xl mb-4"></i>
+                    <div class="text-4xl font-black text-white mb-2">15+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest">Software Titles</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-8 text-center fade-up d-3">
+                    <i class="fa-solid fa-star text-accent text-4xl mb-4"></i>
+                    <div class="text-4xl font-black text-white mb-2">4.9</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest">Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="py-16 bg-ink/60 border-y border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="glass-3d card-3d rounded-2xl p-8 sm:p-10 text-center fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-5"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3 class="display text-2xl sm:text-3xl font-black text-white mb-3">
+                    Stay in the <span class="gradient-text">loop.</span>
+                </h3>
+                <p class="text-gray-400 mb-6 max-w-md mx-auto text-sm">Get the latest updates, offers, and design tips delivered to your inbox.</p>
+                <form action="https://formspree.io/f/mkjgbgbr" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                    <input type="email" name="email" required placeholder="your@email.com" class="flex-1 bg-ink border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition">
+                    <button type="submit" class="btn-3d bg-accent text-ink font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap">
+                        Subscribe <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LATEST UPDATES ============ -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-newspaper"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Latest Updates</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">News from the <span class="gradient-text">Studio</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <article class="glass-3d card-3d rounded-2xl overflow-hidden fade-up">
+                    <div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/10 flex items-center justify-center">
+                        <i class="fa-solid fa-rocket text-5xl text-purple-400/70"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">Announcement</div>
+                        <h3 class="text-white font-bold mb-2">New MatrixGold 2026 Release</h3>
+                        <p class="text-gray-500 text-sm mb-4">Latest version with enhanced parametric tools and improved rendering.</p>
+                        <a href="https://wa.me/923128609955" target="_blank" class="text-accent text-sm font-semibold flex items-center gap-2 group">
+                            Learn More <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="glass-3d card-3d rounded-2xl overflow-hidden fade-up d-1">
+                    <div class="h-48 bg-gradient-to-br from-amber-500/20 to-orange-500/10 flex items-center justify-center">
+                        <i class="fa-solid fa-trophy text-5xl text-accent/70"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">Milestone</div>
+                        <h3 class="text-white font-bold mb-2">Crossed 1000+ Projects This Year</h3>
+                        <p class="text-gray-500 text-sm mb-4">Thank you to all our clients for the continued trust and support.</p>
+                        <a href="https://wa.me/923128609955" target="_blank" class="text-accent text-sm font-semibold flex items-center gap-2 group">
+                            Learn More <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="glass-3d card-3d rounded-2xl overflow-hidden fade-up d-2">
+                    <div class="h-48 bg-gradient-to-br from-green-500/20 to-emerald-500/10 flex items-center justify-center">
+                        <i class="fa-solid fa-gift text-5xl text-green-400/70"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">Offer</div>
+                        <h3 class="text-white font-bold mb-2">Special Discount on Bundles</h3>
+                        <p class="text-gray-500 text-sm mb-4">Limited time offer on CorelDRAW + Photoshop combo package.</p>
+                        <a href="https://wa.me/923128609955" target="_blank" class="text-accent text-sm font-semibold flex items-center gap-2 group">
+                            Learn More <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PORTFOLIO CTA (NEW) ============ -->
+    <section class="py-20 bg-ink/60 border-y border-white/5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="glass-3d card-3d rounded-3xl p-10 sm:p-14 text-center fade-up" style="border: 1px solid rgba(245, 158, 11, 0.3);">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-5"><i class="fa-solid fa-images"></i></div>
+                <h2 class="display text-3xl sm:text-4xl font-black text-white mb-4">
+                    Want to see more <span class="gradient-text">of our work?</span>
+                </h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Browse our full portfolio or request custom samples tailored to your needs.</p>
+                <a href="https://wa.me/923128609955?text=Show%20me%20your%20portfolio" target="_blank" class="btn-3d bg-accent text-ink font-bold px-8 py-4 rounded-xl inline-flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> Request Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FINAL CTA BANNER ============ -->
+    <section class="py-20 scene">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="glass-3d card-3d rounded-3xl p-10 sm:p-14 text-center fade-up" style="border: 1px solid rgba(245, 158, 11, 0.3);">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-5"><i class="fa-solid fa-rocket"></i></div>
+                <h2 class="display text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
+                    Ready to start your <span class="gradient-text">next project?</span>
+                </h2>
+                <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto">Let's create something exceptional together. Fast, reliable, and always on time.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/923128609955" target="_blank" class="btn-3d bg-accent text-ink font-bold px-8 py-4 rounded-xl">
+                        <i class="fa-brands fa-whatsapp mr-2"></i>Start on WhatsApp
+                    </a>
+                    <a href="tel:03128609955" class="glass-3d card-3d text-white font-bold px-8 py-4 rounded-xl">
+                        <i class="fa-solid fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
-    <section id="contact" class="py-24 bg-ink/60 border-y border-white/5 scene">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="contact" class="py-24 scene">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-envelope"></i></div>
                 <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Get in Touch</span>
@@ -873,22 +1316,24 @@
     </section>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="py-12 text-center">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mys-logo-3d justify-center mb-4" style="display:inline-flex;">
-                <div class="mys-logo-gem" style="width:40px;height:40px;">
-                    <i class="fa-solid fa-gem" style="font-size:18px;"></i>
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="mys-logo-3d">
+                    <div class="mys-logo-gem" style="width:40px;height:40px;">
+                        <i class="fa-solid fa-gem" style="font-size:18px;"></i>
+                    </div>
+                    <div class="mys-logo-text">
+                        <span class="line1" style="font-size:14px;">MYS <span>ENTERPRISES</span></span>
+                        <span class="line2">Creative & Design Hub</span>
+                    </div>
                 </div>
-                <div class="mys-logo-text" style="text-align:left;">
-                    <span class="line1" style="font-size:16px;">MYS <span>ENTERPRISES</span></span>
-                    <span class="line2">Creative & Design Hub</span>
+                <p class="text-sm text-gray-500 text-center">© 2026 MYS Enterprises. All rights reserved.</p>
+                <div class="flex space-x-6 text-gray-400">
+                    <a href="tel:03128609955" class="hover:text-accent transition"><i class="fa-solid fa-phone text-lg"></i></a>
+                    <a href="mailto:myaseensaddiquimys@gmail.com" class="hover:text-accent transition"><i class="fa-solid fa-envelope text-lg"></i></a>
+                    <a href="https://wa.me/923128609955" target="_blank" class="hover:text-green-400 transition"><i class="fa-brands fa-whatsapp text-lg"></i></a>
                 </div>
-            </div>
-            <p class="text-sm text-gray-500 mb-6 mt-4">MYS Creative & Design Hub. All rights reserved © 2026</p>
-            <div class="flex justify-center space-x-6 text-gray-400">
-                <a href="tel:03128609955" class="hover:text-accent transition"><i class="fa-solid fa-phone text-lg"></i></a>
-                <a href="mailto:myaseensaddiquimys@gmail.com" class="hover:text-accent transition"><i class="fa-solid fa-envelope text-lg"></i></a>
-                <a href="https://wa.me/923128609955" target="_blank" class="hover:text-green-400 transition"><i class="fa-brands fa-whatsapp text-lg"></i></a>
             </div>
         </div>
     </footer>
