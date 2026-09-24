@@ -371,7 +371,7 @@
         }
 
         /* ============================================
-           STYLE 1: CIRCULAR ORBIT WHATSAPP BUTTON
+           FLOATING WHATSAPP BUTTON (Circular Orbit)
            ============================================ */
         .wa-orbit {
             position: fixed;
@@ -467,24 +467,22 @@
             transform: translateY(-50%) translateX(0);
         }
 
-        /* FAQ */
-        details summary { cursor: pointer; list-style: none; }
-        details summary::-webkit-details-marker { display: none; }
-        details[open] .faq-icon { transform: rotate(45deg); }
-        .faq-icon { transition: transform 0.3s; }
-
         /* Mobile */
         @media (max-width: 640px) {
             .wa-orbit { width: 60px; height: 60px; font-size: 28px; bottom: 20px; right: 20px; }
             .wa-orbit .wa-tip { display: none; }
         }
+
+        /* FAQ */
+        details summary { cursor: pointer; list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] .faq-icon { transform: rotate(45deg); }
+        .faq-icon { transition: transform 0.3s; }
     </style>
 </head>
 <body>
 
-    <!-- ============================================
-         FLOATING WHATSAPP BUTTON (Style 1 - Circular Orbit)
-         ============================================ -->
+    <!-- FLOATING WHATSAPP BUTTON -->
     <a href="https://wa.me/923128609955?text=Assalam%20o%20Alaikum%20MYS%20Enterprises!%20Mujhe%20aap%20ki%20services%20ke%20baare%20mein%20maloomat%20chahiye." 
        target="_blank" 
        rel="noopener noreferrer"
@@ -552,7 +550,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-left">
                     
-                    <!-- ✨ NAYA: MYS ENTERPRISES Text (Blue Line Wali Jagah) -->
+                    <!-- MYS ENTERPRISES Heading -->
                     <div class="mb-6">
                         <h2 class="display text-2xl lg:text-3xl font-black text-white tracking-wider text-3d">
                             MYS <span class="gradient-text">ENTERPRISES</span>
@@ -586,23 +584,24 @@
                         </a>
                     </div>
 
-                    <!-- ✨ UPDATED: Stats Numbers (1000+ aur 5000+) -->
-                    <div class="grid grid-cols-3 gap-4 max-w-md">
-                        <div class="glass-3d card-3d rounded-2xl p-4 text-center">
-                            <div class="text-2xl font-black text-accent">1000+</div>
-                            <div class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-check-circle mr-1"></i>Projects</div>
+                    <!-- ✅ FIXED: Stats (Mobile Friendly) -->
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-md">
+                        <div class="glass-3d card-3d rounded-2xl p-3 sm:p-4 text-center overflow-hidden">
+                            <div class="text-lg sm:text-2xl font-black text-accent leading-tight">1000+</div>
+                            <div class="text-[10px] sm:text-xs text-gray-500 mt-1"><i class="fa-solid fa-check-circle mr-1"></i>Projects</div>
                         </div>
-                        <div class="glass-3d card-3d rounded-2xl p-4 text-center">
-                            <div class="text-2xl font-black text-accent">5000+</div>
-                            <div class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-heart mr-1"></i>Clients</div>
+                        <div class="glass-3d card-3d rounded-2xl p-3 sm:p-4 text-center overflow-hidden">
+                            <div class="text-lg sm:text-2xl font-black text-accent leading-tight">5000+</div>
+                            <div class="text-[10px] sm:text-xs text-gray-500 mt-1"><i class="fa-solid fa-heart mr-1"></i>Clients</div>
                         </div>
-                        <div class="glass-3d card-3d rounded-2xl p-4 text-center">
-                            <div class="text-2xl font-black text-accent">24/7</div>
-                            <div class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-clock mr-1"></i>Support</div>
+                        <div class="glass-3d card-3d rounded-2xl p-3 sm:p-4 text-center overflow-hidden">
+                            <div class="text-lg sm:text-2xl font-black text-accent leading-tight">24/7</div>
+                            <div class="text-[10px] sm:text-xs text-gray-500 mt-1"><i class="fa-solid fa-clock mr-1"></i>Support</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- 3D Diamond -->
                 <div class="relative hidden lg:flex items-center justify-center fade-right" style="height: 500px;">
                     <div class="diamond-wrapper">
                         <div class="diamond-glow"></div>
