@@ -40,35 +40,25 @@
         .display { font-family: 'Space Grotesk', sans-serif; }
         .serif { font-family: 'Instrument Serif', serif; font-weight: 400; }
 
-        /* ========== VISITOR COUNTER (Compact - Top Right) ========== */
-        .visitor-counter-bar {
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
-            border-bottom: 1px solid rgba(245, 158, 11, 0.15);
-            padding: 6px 16px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            font-size: 11px;
-            position: relative;
-            z-index: 50;
-        }
-        .visitor-counter-bar > div {
+        /* ========== VISITOR COUNTER (In Header) ========== */
+        .visitor-counter-header {
             display: inline-flex;
             align-items: center;
             gap: 5px;
             background: rgba(16, 20, 31, 0.85);
             border: 1px solid rgba(245, 158, 11, 0.3);
             border-radius: 20px;
-            padding: 3px 12px;
-            backdrop-filter: blur(10px);
+            padding: 4px 12px;
+            font-size: 11px;
             line-height: 1;
+            backdrop-filter: blur(10px);
         }
-        .visitor-counter-bar #gcvc-for {
+        .visitor-counter-header #gcvc-for {
             color: #f59e0b;
             font-weight: 600;
             font-size: 11px;
         }
-        .visitor-counter-bar #gcvc-views {
+        .visitor-counter-header #gcvc-views {
             color: #ffffff;
             font-weight: 800;
             font-size: 12px;
@@ -93,6 +83,9 @@
         }
         #gcvc-views *:not(:first-child) {
             display: none !important;
+        }
+        @media (max-width: 640px) {
+            .visitor-counter-header { display: none; }
         }
 
         .scene { perspective: 1200px; perspective-origin: 50% 50%; }
@@ -268,6 +261,21 @@
             animation: shimmer 3s infinite;
         }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
+
+        /* Adobe App Icons */
+        .adobe-icon {
+            width: 56px; height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
+            flex-shrink: 0;
+        }
+        .adobe-ai { background: #330000; color: #FF9A00; border: 2px solid #FF9A00; }
+        .adobe-pr { background: #2D0A3E; color: #9999FF; border: 2px solid #9999FF; }
 
         .mys-logo-3d {
             display: flex; align-items: center; gap: 12px;
@@ -486,7 +494,7 @@
             white-space: nowrap;
         }
 
-        /* ===== STEP CONNECTOR ===== */
+        /* Step Connector */
         .step-connector {
             position: absolute;
             top: 50%;
@@ -502,15 +510,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ============ VISITOR COUNTER (Compact - Top Right) ============ -->
-    <div class="visitor-counter-bar">
-        <div>
-            <i class="fa-solid fa-eye" style="color: #f59e0b; font-size: 11px;"></i>
-            <span id="gcvc-for">Visitors:</span>
-            <span id="gcvc-views">...</span>
-        </div>
-    </div>
 
     <!-- ============ FIXED FLOATING WHATSAPP BUTTON ============ -->
     <a href="https://wa.me/923128609955?text=Assalam%20o%20Alaikum%20MYS%20Enterprises!%20Mujhe%20aap%20ki%20services%20ke%20baare%20mein%20maloomat%20chahiye." 
@@ -544,6 +543,14 @@
                 <a href="#reviews" class="text-gray-400 hover:text-accent transition">Reviews</a>
                 <a href="#contact" class="text-gray-400 hover:text-accent transition">Contact</a>
             </nav>
+
+            <!-- Visitor Counter (Compact) -->
+            <div class="visitor-counter-header hidden md:inline-flex">
+                <i class="fa-solid fa-eye" style="color: #f59e0b; font-size: 11px;"></i>
+                <span id="gcvc-for">Visitors:</span>
+                <span id="gcvc-views">...</span>
+            </div>
+
             <a href="tel:03128609955" class="btn-3d bg-accent text-ink font-bold px-3 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap">
                 <i class="fa-solid fa-phone mr-2"></i>0312-8609955
             </a>
@@ -642,6 +649,10 @@
             <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-cube text-amber-400 text-2xl"></i> Rhino 7</span>
             <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-cubes text-orange-400 text-2xl"></i> Blender</span>
             <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-laptop-code text-cyan-400 text-2xl"></i> Custom Tools</span>
+            <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-pen-fancy text-orange-400 text-2xl"></i> Illustrator</span>
+            <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-drafting-compass text-red-400 text-2xl"></i> AutoCAD</span>
+            <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-file-word text-blue-400 text-2xl"></i> Office 365</span>
+            <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-brands fa-windows text-cyan-400 text-2xl"></i> Windows</span>
             <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-pen-nib text-green-500 text-2xl"></i> CorelDRAW</span>
             <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><span class="ps-icon" style="width:34px;height:34px;font-size:15px;">Ps</span> Photoshop</span>
             <span class="flex items-center gap-3 text-gray-400 text-lg font-semibold"><i class="fa-solid fa-gem text-accent text-2xl"></i> MatrixGold</span>
@@ -664,7 +675,7 @@
                     <div class="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">Happy Clients</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-3xl sm:text-4xl font-black text-accent mb-1">15+</div>
+                    <div class="text-3xl sm:text-4xl font-black text-accent mb-1">20+</div>
                     <div class="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">Software Titles</div>
                 </div>
                 <div class="text-center">
@@ -709,7 +720,7 @@
         </div>
     </section>
 
-    <!-- ============ HOW TO ORDER (NEW - CUSTOMER GUIDE) ============ -->
+    <!-- ============ HOW TO ORDER ============ -->
     <section class="py-24 bg-ink/60 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
@@ -725,21 +736,18 @@
                     <i class="fa-solid fa-comments text-accent text-3xl mb-4"></i>
                     <h3 class="text-lg font-bold text-white mb-3">Contact Us</h3>
                     <p class="text-gray-500 text-sm">Reach out via WhatsApp, call, or email with your requirement.</p>
-                    <div class="step-connector"></div>
                 </div>
                 <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-1 relative">
                     <div class="w-14 h-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mx-auto mb-4 text-xl font-black">2</div>
                     <i class="fa-solid fa-file-invoice text-accent text-3xl mb-4"></i>
                     <h3 class="text-lg font-bold text-white mb-3">Get Quote</h3>
                     <p class="text-gray-500 text-sm">We'll discuss your project and provide a fair price quote.</p>
-                    <div class="step-connector"></div>
                 </div>
                 <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-2 relative">
                     <div class="w-14 h-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mx-auto mb-4 text-xl font-black">3</div>
                     <i class="fa-solid fa-credit-card text-accent text-3xl mb-4"></i>
                     <h3 class="text-lg font-bold text-white mb-3">Confirm Order</h3>
                     <p class="text-gray-500 text-sm">Pay advance or full amount via your preferred method.</p>
-                    <div class="step-connector"></div>
                 </div>
                 <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-3 relative">
                     <div class="w-14 h-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mx-auto mb-4 text-xl font-black">4</div>
@@ -749,7 +757,6 @@
                 </div>
             </div>
 
-            <!-- Trust Badges -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto fade-up">
                 <div class="glass-3d rounded-xl p-4 text-center">
                     <i class="fa-solid fa-lock text-green-400 text-xl mb-2"></i>
@@ -804,7 +811,7 @@
         </div>
     </section>
 
-    <!-- ============ SOFTWARE HUB ============ -->
+    <!-- ============ SOFTWARE HUB (Expanded) ============ -->
     <section id="software" class="py-24 bg-ink/60 border-y border-white/5 scene">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
@@ -813,7 +820,9 @@
                 <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Premium <span class="gradient-text">Software</span></h2>
                 <p class="text-gray-400 max-w-2xl mx-auto">Genuine, reliable access to professional design & 3D software.</p>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+            <!-- Original 6 -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                 <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-green-500/10 text-green-400"><i class="fa-solid fa-pen-nib"></i></div>
@@ -870,6 +879,99 @@
                     <h3 class="text-lg font-bold text-white mb-2">Custom Utilities</h3>
                     <p class="text-gray-500 text-sm mb-5">Customized software packages.</p>
                     <a href="https://wa.me/923128609955?text=I%20want%20Custom%20Software" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+            </div>
+
+            <!-- NEW: 9 Extra Software -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="adobe-icon adobe-ai">Ai</div>
+                        <span class="text-xs bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full font-semibold">Design</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Adobe Illustrator</h3>
+                    <p class="text-gray-500 text-sm mb-5">Professional vector graphics editor for logos & illustrations.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Illustrator" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-1">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="icon-box bg-red-500/10 text-red-400"><i class="fa-solid fa-drafting-compass"></i></div>
+                        <span class="text-xs bg-red-500/10 text-red-400 px-3 py-1 rounded-full font-semibold">CAD</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">AutoCAD</h3>
+                    <p class="text-gray-500 text-sm mb-5">Industry-standard 2D & 3D design and drafting software.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20AutoCAD" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-2">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="icon-box bg-blue-500/10 text-blue-400"><i class="fa-solid fa-file-word"></i></div>
+                        <span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-semibold">Office</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">MS Office 365</h3>
+                    <p class="text-gray-500 text-sm mb-5">Word, Excel, PowerPoint — complete office productivity suite.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Office%20365" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="icon-box bg-cyan-500/10 text-cyan-400"><i class="fa-brands fa-windows"></i></div>
+                        <span class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full font-semibold">OS</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Windows 10 / 11 Pro</h3>
+                    <p class="text-gray-500 text-sm mb-5">Genuine Windows activation keys for all editions.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Windows" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="adobe-icon adobe-pr">Pr</div>
+                        <span class="text-xs bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full font-semibold">Video</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Premiere Pro</h3>
+                    <p class="text-gray-500 text-sm mb-5">Professional video editing software for all creators.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Premiere%20Pro" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="icon-box bg-pink-500/10 text-pink-400"><i class="fa-solid fa-wand-sparkles"></i></div>
+                        <span class="text-xs bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full font-semibold">Motion</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">After Effects</h3>
+                    <p class="text-gray-500 text-sm mb-5">Motion graphics and visual effects software.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20After%20Effects" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="icon-box bg-teal-500/10 text-teal-400"><i class="fa-brands fa-figma"></i></div>
+                        <span class="text-xs bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full font-semibold">UI/UX</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Figma Pro</h3>
+                    <p class="text-gray-500 text-sm mb-5">Collaborative interface design tool for modern teams.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Figma%20Pro" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="icon-box bg-cyan-500/10 text-cyan-400"><i class="fa-solid fa-palette"></i></div>
+                        <span class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full font-semibold">Design</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Canva Pro</h3>
+                    <p class="text-gray-500 text-sm mb-5">Easy design tool with premium templates and assets.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20Canva%20Pro" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
+                </div>
+
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="icon-box bg-orange-500/10 text-orange-400"><i class="fa-solid fa-cubes"></i></div>
+                        <span class="text-xs bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full font-semibold">3D</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">ZBrush</h3>
+                    <p class="text-gray-500 text-sm mb-5">Digital sculpting tool for 3D artists and designers.</p>
+                    <a href="https://wa.me/923128609955?text=I%20want%20ZBrush" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
             </div>
         </div>
@@ -1018,7 +1120,7 @@
         </div>
     </section>
 
-    <!-- ============ PAYMENT METHODS (NEW) ============ -->
+    <!-- ============ PAYMENT METHODS ============ -->
     <section class="py-24 bg-ink/60 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
@@ -1250,7 +1352,7 @@
         </div>
     </section>
 
-    <!-- ============ GUARANTEES (NEW) ============ -->
+    <!-- ============ GUARANTEES ============ -->
     <section class="py-24 bg-ink/60 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
@@ -1267,7 +1369,7 @@
                     <p class="text-gray-500 text-sm">Not satisfied? Get a full refund within 7 days — no questions asked.</p>
                 </div>
                 <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-1">
-                    <div class="icon-box bg-accent/10 text-accent mb-5"><i class="fa-solid fa-badge-check"></i></div>
+                    <div class="icon-box bg-accent/10 text-accent mb-5"><i class="fa-solid fa-certificate"></i></div>
                     <h3 class="text-lg font-bold text-white mb-3">100% Original Work</h3>
                     <p class="text-gray-500 text-sm">Every design is custom-made from scratch. No templates, no reselling.</p>
                 </div>
@@ -1495,7 +1597,7 @@
                 </div>
                 <div class="glass-3d card-3d rounded-2xl p-4 sm:p-8 text-center fade-up d-2 overflow-hidden">
                     <i class="fa-solid fa-cube text-accent text-2xl sm:text-4xl mb-3 sm:mb-4"></i>
-                    <div class="text-xl sm:text-4xl font-black text-white mb-2 leading-tight">15+</div>
+                    <div class="text-xl sm:text-4xl font-black text-white mb-2 leading-tight">20+</div>
                     <div class="text-[9px] sm:text-xs text-gray-500 uppercase tracking-wider leading-tight">Software<br class="sm:hidden"> Titles</div>
                 </div>
                 <div class="glass-3d card-3d rounded-2xl p-4 sm:p-8 text-center fade-up d-3 overflow-hidden">
@@ -1507,7 +1609,7 @@
         </div>
     </section>
 
-    <!-- ============ CUSTOMER SUPPORT (NEW) ============ -->
+    <!-- ============ CUSTOMER SUPPORT ============ -->
     <section class="py-24 bg-ink/60 border-y border-white/5">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="glass-3d card-3d rounded-3xl p-10 sm:p-14 fade-up" style="border: 1px solid rgba(37, 211, 102, 0.3);">
@@ -1761,7 +1863,7 @@
     <script data-goatcounter="https://mys-enterprises.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
 
-    <!-- ============ VISITOR COUNT DISPLAY (Compact) ============ -->
+    <!-- ============ VISITOR COUNT DISPLAY (Compact Header) ============ -->
     <script>
         var t = setInterval(function() {
             if (window.goatcounter && window.goatcounter.visit_count) {
