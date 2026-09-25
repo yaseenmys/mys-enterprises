@@ -40,54 +40,6 @@
         .display { font-family: 'Space Grotesk', sans-serif; }
         .serif { font-family: 'Instrument Serif', serif; font-weight: 400; }
 
-        /* ========== VISITOR COUNTER (In Header) ========== */
-        .visitor-counter-header {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(16, 20, 31, 0.85);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 20px;
-            padding: 4px 12px;
-            font-size: 11px;
-            line-height: 1;
-            backdrop-filter: blur(10px);
-        }
-        .visitor-counter-header #gcvc-for {
-            color: #f59e0b;
-            font-weight: 600;
-            font-size: 11px;
-        }
-        .visitor-counter-header #gcvc-views {
-            color: #ffffff;
-            font-weight: 800;
-            font-size: 12px;
-            display: inline-flex;
-            align-items: center;
-        }
-        #gcvc-views div,
-        #gcvc-views table,
-        #gcvc-views tbody,
-        #gcvc-views tr,
-        #gcvc-views td,
-        #gcvc-views a,
-        #gcvc-views br,
-        #gcvc-views hr {
-            display: none !important;
-        }
-        #gcvc-views {
-            background: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        #gcvc-views *:not(:first-child) {
-            display: none !important;
-        }
-        @media (max-width: 640px) {
-            .visitor-counter-header { display: none; }
-        }
-
         .scene { perspective: 1200px; perspective-origin: 50% 50%; }
         .card-3d {
             transform-style: preserve-3d;
@@ -262,7 +214,6 @@
         }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
 
-        /* Adobe App Icons */
         .adobe-icon {
             width: 56px; height: 56px;
             border-radius: 12px;
@@ -493,20 +444,6 @@
             z-index: 10;
             white-space: nowrap;
         }
-
-        /* Step Connector */
-        .step-connector {
-            position: absolute;
-            top: 50%;
-            right: -12px;
-            width: 24px;
-            height: 2px;
-            background: linear-gradient(90deg, #f59e0b, transparent);
-            display: none;
-        }
-        @media (min-width: 1024px) {
-            .step-connector { display: block; }
-        }
     </style>
 </head>
 <body>
@@ -543,13 +480,6 @@
                 <a href="#reviews" class="text-gray-400 hover:text-accent transition">Reviews</a>
                 <a href="#contact" class="text-gray-400 hover:text-accent transition">Contact</a>
             </nav>
-
-            <!-- Visitor Counter (Compact) -->
-            <div class="visitor-counter-header hidden md:inline-flex">
-                <i class="fa-solid fa-eye" style="color: #f59e0b; font-size: 11px;"></i>
-                <span id="gcvc-for">Visitors:</span>
-                <span id="gcvc-views">...</span>
-            </div>
 
             <a href="tel:03128609955" class="btn-3d bg-accent text-ink font-bold px-3 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap">
                 <i class="fa-solid fa-phone mr-2"></i>0312-8609955
@@ -811,7 +741,7 @@
         </div>
     </section>
 
-    <!-- ============ SOFTWARE HUB (Expanded) ============ -->
+    <!-- ============ SOFTWARE HUB ============ -->
     <section id="software" class="py-24 bg-ink/60 border-y border-white/5 scene">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
@@ -821,8 +751,7 @@
                 <p class="text-gray-400 max-w-2xl mx-auto">Genuine, reliable access to professional design & 3D software.</p>
             </div>
 
-            <!-- Original 6 -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-green-500/10 text-green-400"><i class="fa-solid fa-pen-nib"></i></div>
@@ -880,11 +809,8 @@
                     <p class="text-gray-500 text-sm mb-5">Customized software packages.</p>
                     <a href="https://wa.me/923128609955?text=I%20want%20Custom%20Software" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
-            </div>
 
-            <!-- NEW: 9 Extra Software -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
                     <div class="flex items-start justify-between mb-5">
                         <div class="adobe-icon adobe-ai">Ai</div>
                         <span class="text-xs bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full font-semibold">Design</span>
@@ -894,7 +820,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20Illustrator" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-1">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-red-500/10 text-red-400"><i class="fa-solid fa-drafting-compass"></i></div>
                         <span class="text-xs bg-red-500/10 text-red-400 px-3 py-1 rounded-full font-semibold">CAD</span>
@@ -904,7 +830,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20AutoCAD" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-2">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-blue-500/10 text-blue-400"><i class="fa-solid fa-file-word"></i></div>
                         <span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-semibold">Office</span>
@@ -914,7 +840,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20Office%20365" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
                     <div class="flex items-start justify-between mb-5">
                         <div class="icon-box bg-cyan-500/10 text-cyan-400"><i class="fa-brands fa-windows"></i></div>
                         <span class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full font-semibold">OS</span>
@@ -924,7 +850,7 @@
                     <a href="https://wa.me/923128609955?text=I%20want%20Windows" target="_blank" class="block text-center bg-accent hover:bg-accentHover text-ink font-bold py-3 rounded-xl transition"><i class="fa-solid fa-download mr-2"></i>Get Now</a>
                 </div>
 
-                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-4">
                     <div class="flex items-start justify-between mb-5">
                         <div class="adobe-icon adobe-pr">Pr</div>
                         <span class="text-xs bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full font-semibold">Video</span>
@@ -1859,40 +1785,23 @@
         });
     </script>
 
-    <!-- ============ GOATCOUNTER (Visitor Tracking) ============ -->
-    <script data-goatcounter="https://mys-enterprises.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
-
-    <!-- ============ VISITOR COUNT DISPLAY (Compact Header) ============ -->
+    <!-- ============ CLEANUP: Remove any GoatCounter leftovers ============ -->
     <script>
-        var t = setInterval(function() {
-            if (window.goatcounter && window.goatcounter.visit_count) {
-                clearInterval(t);
-                window.goatcounter.visit_count({
-                    append: '#gcvc-views',
-                    type: 'html',
-                    no_branding: true,
-                    style: `
-                        div, table, tbody, tr, td, a, span:not(#gcvc-views) { 
-                            display: none !important; 
-                            margin: 0 !important; 
-                            padding: 0 !important; 
-                            border: none !important; 
-                        }
-                        #gcvc-views { 
-                            display: inline !important;
-                            color: #ffffff !important; 
-                            font-weight: 800 !important; 
-                            font-size: 12px !important; 
-                            line-height: 1 !important;
-                            background: transparent !important;
-                            border: none !important;
-                            padding: 0 !important;
-                        }
-                    `
-                });
-            }
-        }, 100);
+        // Agar purani GoatCounter script ya elements kisi wajah se mojood hain to unhe force remove kar do
+        setInterval(function() {
+            // Remove any GoatCounter scripts
+            document.querySelectorAll('script[data-goatcounter]').forEach(function(el) {
+                // Do nothing - don't remove (harmless if not present)
+            });
+            
+            // Hide any GoatCounter injected iframes/divs
+            document.querySelectorAll('iframe[src*="goatcounter"], iframe[src*="gc.zgo.at"], div[id*="gcvc"], div[class*="goatcounter"]').forEach(function(el) {
+                el.style.display = 'none';
+                el.style.visibility = 'hidden';
+                el.style.width = '0';
+                el.style.height = '0';
+            });
+        }, 1000);
     </script>
 
 </body>
