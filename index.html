@@ -40,38 +40,59 @@
         .display { font-family: 'Space Grotesk', sans-serif; }
         .serif { font-family: 'Instrument Serif', serif; font-weight: 400; }
 
-        /* ========== VISITOR COUNTER (Top of Page) ========== */
+        /* ========== VISITOR COUNTER (Compact - Top Right) ========== */
         .visitor-counter-bar {
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
-            border-bottom: 1px solid rgba(245, 158, 11, 0.2);
-            padding: 8px 16px;
-            text-align: center;
-            font-size: 12px;
-            color: #9ca3af;
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+            padding: 6px 16px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 11px;
             position: relative;
             z-index: 50;
+        }
+        .visitor-counter-bar > div {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(16, 20, 31, 0.85);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 20px;
+            padding: 3px 12px;
+            backdrop-filter: blur(10px);
+            line-height: 1;
         }
         .visitor-counter-bar #gcvc-for {
             color: #f59e0b;
             font-weight: 600;
+            font-size: 11px;
         }
         .visitor-counter-bar #gcvc-views {
             color: #ffffff;
             font-weight: 800;
-            font-size: 14px;
-        }
-        .visitor-counter-bar #gcvc-by {
-            display: none;
-        }
-        .visitor-counter-bar div {
+            font-size: 12px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(16, 20, 31, 0.8);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 20px;
-            padding: 4px 14px;
-            backdrop-filter: blur(10px);
+        }
+        #gcvc-views div,
+        #gcvc-views table,
+        #gcvc-views tbody,
+        #gcvc-views tr,
+        #gcvc-views td,
+        #gcvc-views a,
+        #gcvc-views br,
+        #gcvc-views hr {
+            display: none !important;
+        }
+        #gcvc-views {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        #gcvc-views *:not(:first-child) {
+            display: none !important;
         }
 
         .scene { perspective: 1200px; perspective-origin: 50% 50%; }
@@ -464,16 +485,30 @@
             z-index: 10;
             white-space: nowrap;
         }
+
+        /* ===== STEP CONNECTOR ===== */
+        .step-connector {
+            position: absolute;
+            top: 50%;
+            right: -12px;
+            width: 24px;
+            height: 2px;
+            background: linear-gradient(90deg, #f59e0b, transparent);
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .step-connector { display: block; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- ============ VISITOR COUNTER (Top) ============ -->
+    <!-- ============ VISITOR COUNTER (Compact - Top Right) ============ -->
     <div class="visitor-counter-bar">
         <div>
-            <i class="fa-solid fa-eye" style="color: #f59e0b; font-size: 12px;"></i>
+            <i class="fa-solid fa-eye" style="color: #f59e0b; font-size: 11px;"></i>
             <span id="gcvc-for">Visitors:</span>
-            <span id="gcvc-views">Loading...</span>
+            <span id="gcvc-views">...</span>
         </div>
     </div>
 
@@ -674,8 +709,70 @@
         </div>
     </section>
 
-    <!-- ============ PROCESS ============ -->
+    <!-- ============ HOW TO ORDER (NEW - CUSTOMER GUIDE) ============ -->
     <section class="py-24 bg-ink/60 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-shopping-cart"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">How To Order</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Order in <span class="gradient-text">4 Easy Steps</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Simple, fast, and hassle-free ordering process — from first contact to final delivery.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up relative">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mx-auto mb-4 text-xl font-black">1</div>
+                    <i class="fa-solid fa-comments text-accent text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-3">Contact Us</h3>
+                    <p class="text-gray-500 text-sm">Reach out via WhatsApp, call, or email with your requirement.</p>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-1 relative">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mx-auto mb-4 text-xl font-black">2</div>
+                    <i class="fa-solid fa-file-invoice text-accent text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-3">Get Quote</h3>
+                    <p class="text-gray-500 text-sm">We'll discuss your project and provide a fair price quote.</p>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-2 relative">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mx-auto mb-4 text-xl font-black">3</div>
+                    <i class="fa-solid fa-credit-card text-accent text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-3">Confirm Order</h3>
+                    <p class="text-gray-500 text-sm">Pay advance or full amount via your preferred method.</p>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 text-center fade-up d-3 relative">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mx-auto mb-4 text-xl font-black">4</div>
+                    <i class="fa-solid fa-check-circle text-green-400 text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-3">Get Delivery</h3>
+                    <p class="text-gray-500 text-sm">Receive your files or software via WhatsApp or email.</p>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto fade-up">
+                <div class="glass-3d rounded-xl p-4 text-center">
+                    <i class="fa-solid fa-lock text-green-400 text-xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">100% Secure</div>
+                </div>
+                <div class="glass-3d rounded-xl p-4 text-center">
+                    <i class="fa-solid fa-bolt text-accent text-xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">Fast Delivery</div>
+                </div>
+                <div class="glass-3d rounded-xl p-4 text-center">
+                    <i class="fa-solid fa-rotate-left text-purple-400 text-xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">Easy Refund</div>
+                </div>
+                <div class="glass-3d rounded-xl p-4 text-center">
+                    <i class="fa-solid fa-headset text-cyan-400 text-xl mb-2"></i>
+                    <div class="text-xs text-gray-400 font-semibold">24/7 Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-diagram-project"></i></div>
@@ -708,7 +805,7 @@
     </section>
 
     <!-- ============ SOFTWARE HUB ============ -->
-    <section id="software" class="py-24 scene">
+    <section id="software" class="py-24 bg-ink/60 border-y border-white/5 scene">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-cube"></i></div>
@@ -779,7 +876,7 @@
     </section>
 
     <!-- ============ PORTFOLIO ============ -->
-    <section id="portfolio" class="py-24 bg-ink/60 border-y border-white/5 scene">
+    <section id="portfolio" class="py-24 scene">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-images"></i></div>
@@ -921,8 +1018,53 @@
         </div>
     </section>
 
+    <!-- ============ PAYMENT METHODS (NEW) ============ -->
+    <section class="py-24 bg-ink/60 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-wallet"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Payment Methods</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">We Accept <span class="gradient-text">All Payments</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Choose your favorite payment method for easy transactions.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up">
+                    <i class="fa-brands fa-cc-paypal text-blue-400 text-4xl mb-3"></i>
+                    <div class="text-white font-bold text-sm">PayPal</div>
+                    <div class="text-gray-500 text-xs mt-1">International</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-1">
+                    <i class="fa-solid fa-mobile-screen text-green-500 text-4xl mb-3"></i>
+                    <div class="text-white font-bold text-sm">EasyPaisa</div>
+                    <div class="text-gray-500 text-xs mt-1">Pakistan</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-2">
+                    <i class="fa-solid fa-mobile-screen text-purple-400 text-4xl mb-3"></i>
+                    <div class="text-white font-bold text-sm">JazzCash</div>
+                    <div class="text-gray-500 text-xs mt-1">Pakistan</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-3">
+                    <i class="fa-solid fa-building-columns text-amber-400 text-4xl mb-3"></i>
+                    <div class="text-white font-bold text-sm">Bank Transfer</div>
+                    <div class="text-gray-500 text-xs mt-1">All Banks</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-3">
+                    <i class="fa-brands fa-bitcoin text-orange-400 text-4xl mb-3"></i>
+                    <div class="text-white font-bold text-sm">Crypto</div>
+                    <div class="text-gray-500 text-xs mt-1">BTC / USDT</div>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-6 text-center fade-up d-4">
+                    <i class="fa-solid fa-money-bill-wave text-green-400 text-4xl mb-3"></i>
+                    <div class="text-white font-bold text-sm">Cash</div>
+                    <div class="text-gray-500 text-xs mt-1">Local Only</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ CLIENTS WALL ============ -->
-    <section class="py-16 border-b border-white/5">
+    <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10 fade-up">
                 <span class="text-gray-500 text-xs font-bold tracking-[0.3em] uppercase">Trusted By Leading Brands</span>
@@ -957,7 +1099,7 @@
     </section>
 
     <!-- ============ PRICING ============ -->
-    <section id="pricing" class="py-24 scene">
+    <section id="pricing" class="py-24 bg-ink/60 border-y border-white/5 scene">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-tags"></i></div>
@@ -1011,7 +1153,7 @@
     </section>
 
     <!-- ============ REVIEWS ============ -->
-    <section id="reviews" class="py-24 bg-ink/60 border-y border-white/5 scene">
+    <section id="reviews" class="py-24 scene">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-star"></i></div>
@@ -1103,6 +1245,41 @@
                             <div class="text-gray-500 text-xs">Studio Manager</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GUARANTEES (NEW) ============ -->
+    <section class="py-24 bg-ink/60 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-up">
+                <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                <span class="text-accent text-xs font-bold tracking-[0.3em] uppercase">Our Guarantees</span>
+                <h2 class="display text-4xl lg:text-5xl font-black text-white mt-3 mb-4">Your Trust is <span class="gradient-text">Our Priority</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">100% satisfaction guarantee with every order.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up">
+                    <div class="icon-box bg-green-500/10 text-green-400 mb-5"><i class="fa-solid fa-rotate-left"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-3">Money-Back Guarantee</h3>
+                    <p class="text-gray-500 text-sm">Not satisfied? Get a full refund within 7 days — no questions asked.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-1">
+                    <div class="icon-box bg-accent/10 text-accent mb-5"><i class="fa-solid fa-badge-check"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-3">100% Original Work</h3>
+                    <p class="text-gray-500 text-sm">Every design is custom-made from scratch. No templates, no reselling.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-2">
+                    <div class="icon-box bg-purple-500/10 text-purple-400 mb-5"><i class="fa-solid fa-lock"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-3">Data Privacy</h3>
+                    <p class="text-gray-500 text-sm">Your files and personal info are safe. We never share with third parties.</p>
+                </div>
+                <div class="glass-3d card-3d rounded-2xl p-7 fade-up d-3">
+                    <div class="icon-box bg-cyan-500/10 text-cyan-400 mb-5"><i class="fa-solid fa-infinity"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-3">Free Revisions</h3>
+                    <p class="text-gray-500 text-sm">Minor revisions are always free. We work until you're 100% happy.</p>
                 </div>
             </div>
         </div>
@@ -1330,8 +1507,56 @@
         </div>
     </section>
 
+    <!-- ============ CUSTOMER SUPPORT (NEW) ============ -->
+    <section class="py-24 bg-ink/60 border-y border-white/5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="glass-3d card-3d rounded-3xl p-10 sm:p-14 fade-up" style="border: 1px solid rgba(37, 211, 102, 0.3);">
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div class="icon-box bg-green-500/10 text-green-400 mb-5"><i class="fa-solid fa-headset"></i></div>
+                        <h2 class="display text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
+                            Need Help? <span class="gradient-text">We're Online!</span>
+                        </h2>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Have a question about our services or need help with your order? Our team is available 24/7 to assist you.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-gray-300 text-sm">
+                                <i class="fa-solid fa-check-circle text-green-400"></i>
+                                Instant response via WhatsApp
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300 text-sm">
+                                <i class="fa-solid fa-check-circle text-green-400"></i>
+                                Free consultation for new projects
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300 text-sm">
+                                <i class="fa-solid fa-check-circle text-green-400"></i>
+                                Multi-language support
+                            </li>
+                        </ul>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://wa.me/923128609955" target="_blank" class="btn-3d bg-accent text-ink font-bold px-6 py-3 rounded-xl inline-flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp Now
+                            </a>
+                            <a href="tel:03128609955" class="glass-3d card-3d text-white font-bold px-6 py-3 rounded-xl inline-flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-phone"></i> Call Us
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-4" style="box-shadow: 0 0 60px rgba(37, 211, 102, 0.6);">
+                            <i class="fa-solid fa-comments text-white text-6xl"></i>
+                        </div>
+                        <div class="text-white font-bold text-lg mb-1">24/7 Available</div>
+                        <div class="text-gray-400 text-sm">Avg response: 5 minutes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ NEWSLETTER ============ -->
-    <section class="py-16 bg-ink/60 border-y border-white/5">
+    <section class="py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
             <div class="glass-3d card-3d rounded-2xl p-8 sm:p-10 text-center fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-5"><i class="fa-solid fa-envelope-open-text"></i></div>
@@ -1350,7 +1575,7 @@
     </section>
 
     <!-- ============ LATEST UPDATES ============ -->
-    <section class="py-24">
+    <section class="py-24 bg-ink/60 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 fade-up">
                 <div class="icon-box mx-auto bg-accent/10 text-accent mb-4"><i class="fa-solid fa-newspaper"></i></div>
@@ -1399,22 +1624,6 @@
                         </a>
                     </div>
                 </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ PORTFOLIO CTA ============ -->
-    <section class="py-20 bg-ink/60 border-y border-white/5">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6">
-            <div class="glass-3d card-3d rounded-3xl p-10 sm:p-14 text-center fade-up" style="border: 1px solid rgba(245, 158, 11, 0.3);">
-                <div class="icon-box mx-auto bg-accent/10 text-accent mb-5"><i class="fa-solid fa-images"></i></div>
-                <h2 class="display text-3xl sm:text-4xl font-black text-white mb-4">
-                    Want to see more <span class="gradient-text">of our work?</span>
-                </h2>
-                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Browse our full portfolio or request custom samples tailored to your needs.</p>
-                <a href="https://wa.me/923128609955?text=Show%20me%20your%20portfolio" target="_blank" class="btn-3d bg-accent text-ink font-bold px-8 py-4 rounded-xl inline-flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp"></i> Request Portfolio
-                </a>
             </div>
         </div>
     </section>
@@ -1549,11 +1758,10 @@
     </script>
 
     <!-- ============ GOATCOUNTER (Visitor Tracking) ============ -->
-    <!-- ✅ Code already set: mys-enterprises -->
     <script data-goatcounter="https://mys-enterprises.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
 
-    <!-- ============ VISITOR COUNT DISPLAY ============ -->
+    <!-- ============ VISITOR COUNT DISPLAY (Compact) ============ -->
     <script>
         var t = setInterval(function() {
             if (window.goatcounter && window.goatcounter.visit_count) {
@@ -1563,10 +1771,22 @@
                     type: 'html',
                     no_branding: true,
                     style: `
-                        div { border: none !important; background: transparent !important; padding: 0 !important; }
-                        #gcvc-views { color: #ffffff !important; font-weight: 800 !important; font-size: 14px !important; }
-                        #gcvc-for { color: #f59e0b !important; font-weight: 600 !important; }
-                        #gcvc-by { display: none !important; }
+                        div, table, tbody, tr, td, a, span:not(#gcvc-views) { 
+                            display: none !important; 
+                            margin: 0 !important; 
+                            padding: 0 !important; 
+                            border: none !important; 
+                        }
+                        #gcvc-views { 
+                            display: inline !important;
+                            color: #ffffff !important; 
+                            font-weight: 800 !important; 
+                            font-size: 12px !important; 
+                            line-height: 1 !important;
+                            background: transparent !important;
+                            border: none !important;
+                            padding: 0 !important;
+                        }
                     `
                 });
             }
